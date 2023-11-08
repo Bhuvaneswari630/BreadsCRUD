@@ -1,7 +1,7 @@
 const React = require('react')
 const Default = require('./layouts/default')
 
-function New() {
+function New({ bakers }) {
     return (
         <Default>
             <h2>Add a new bread</h2>
@@ -21,7 +21,7 @@ function New() {
                         type="text"
                         name='image'
                         id='req-img'
-                        // required
+                    // required
                     />
                 </div>
                 <div>
@@ -33,10 +33,26 @@ function New() {
                         defaultChecked
                     />
                 </div>
+                <div>
+                    <label htmlFor="baker">Baker</label>
+                    <select name="baker" id="baker">
+                        {bakers.map(b => {
+                            return (
+                                <option key={`baker${b.id}`} value={b.id}>{b.name}</option>
+                            )
+                        })}
+                        {/* <option value="Rachel">Rachel</option>
+                        <option value="Monica">Monica</option>
+                        <option value="Joey">Joey</option>
+                        <option value="Chandler">Chandler</option>
+                        <option value="Ross">Ross</option>
+                        <option value="Phoebe">Phoebe</option> */}
+                    </select>
+                </div>
                 <button type='submit'>Create Bread</button>
             </form>
             <div>
-            <a href="/breads"><button>Go back to Index</button></a>
+                <a href="/breads"><button>Go back to Index</button></a>
             </div>
         </Default>
     )

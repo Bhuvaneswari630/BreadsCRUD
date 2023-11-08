@@ -21,6 +21,7 @@ app.use(methodOverride('_method'))
 
 //controller access
 app.use('/breads', require('./controllers/bread_controller'))
+app.use('/bakers', require('./controllers/baker_controller'))
 
 app.get('/', (req, res) => {
     res.send('Welcome to Breads');

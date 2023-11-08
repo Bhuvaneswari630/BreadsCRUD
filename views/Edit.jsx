@@ -1,8 +1,8 @@
 const React = require('react')
 const Default = require('./layouts/default')
 
-function New({ name, image, hasGluten, index }) {
-    console.log('inside edit view', index)
+function New({ bread, index }) {
+    console.log('inside edit view', bread.baker)
     return (
         <Default>
             <h2>Edit a bread</h2>
@@ -13,7 +13,7 @@ function New({ name, image, hasGluten, index }) {
                         type="text"
                         name='name'
                         id='req-name'
-                        defaultValue={name}
+                        defaultValue={bread.name}
                         required
                     />
                 </div>
@@ -23,7 +23,7 @@ function New({ name, image, hasGluten, index }) {
                         type="text"
                         name='image'
                         id='req-img'
-                        defaultValue={image}
+                        defaultValue={bread.image}
                     // required
                     />
                 </div>
@@ -33,12 +33,23 @@ function New({ name, image, hasGluten, index }) {
                         type="checkbox"
                         name='hasGluten'
                         id='req-hasGluten'
-                        defaultChecked={hasGluten ? true : false}
+                        defaultChecked={bread.hasGluten ? true : false}
                     />
                 </div>
-                <input type="submit" />
+                <div>
+                    <label htmlFor="baker">Baker</label>
+                    <select name="baker" id="baker" defaultValue={bread.baker} >
+                        <option value="Rachel">Rachel</option>
+                        <option value="Monica">Monica</option>
+                        <option value="Joey">Joey</option>
+                        <option value="Chandler">Chandler</option>
+                        <option value="Ross">Ross</option>
+                        <option value="Phoebe">Phoebe</option>
+                    </select>
+                </div>
+                <input type="submit" value='Update Bread' />
             </form>
-          
+
             <div>
                 <a href="/breads"><button>Go back to Index</button></a>
             </div>
